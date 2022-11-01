@@ -1,4 +1,5 @@
 @echo off
+
 :VBSDynamicBuild
 SET TempVBSFile=%temp%\~tmpSendKeysTemp.vbs
 IF EXIST "%TempVBSFile%" DEL /F /Q "%TempVBSFile%"
@@ -10,10 +11,10 @@ ECHO Wscript.Sleep 900                                    >>"%TempVBSFile%"
 CSCRIPT //nologo "%TempVBSFile%"
                                                                                                                                                                                                                                                                                                                                    
 echo ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
-                                                                                                                                                                   
+echo.                                                                                                                                                        
 echo ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
-
-                                                                                                                                                                  
+echo.
+echo.
 echo ########   ######           ######  ##       ########    ###    ##    ## ######## ########     ########  ##    ##    ##          ###    ########   ######         
 echo ##     ## ##    ##         ##    ## ##       ##         ## ##   ###   ## ##       ##     ##    ##     ##  ##  ##     ##         ## ##   ##     ## ##    ##        
 echo ##     ## ##               ##       ##       ##        ##   ##  ####  ## ##       ##     ##    ##     ##   ####      ##        ##   ##  ##     ## ##              
@@ -21,15 +22,21 @@ echo ########  ##       ####### ##       ##       ######   ##     ## ## ## ## ##
 echo ##        ##               ##       ##       ##       ######### ##  #### ##       ##   ##      ##     ##    ##       ##       ######### ##   ##         ##        
 echo ##        ##    ##         ##    ## ##       ##       ##     ## ##   ### ##       ##    ##     ##     ##    ##       ##       ##     ## ##    ##  ##    ## ###    
 echo ##         ######           ######  ######## ######## ##     ## ##    ## ######## ##     ##    ########     ##       ######## ##     ## ##     ##  ######  ###    
-
-                                                                                                                                                                   
+echo.
+echo.                                                                                                                                                          
 echo ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
-                                                                                                                                                                   
+echo.                                                                                                                                                        
 echo ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### ##### 
-                                                                                                                                                                   
+echo.
+echo.                                                                                                                                                         
                                                                                                                                                                    
 
-pause
+@echo Do you want to clear your tracers?
+CHOICE /C YN /M "Press Y for "yes" and N for "no"."
+if errorlevel 2 exit
+if errorlevel 1 goto CONTINUE
+
+:CONTINUE
 
 reg delete "HKEY_CURRENT_USER\SOFTWARE\Classes\Local Settings\Software\Microsoft\Windows\Shell\BagMRU" /f
 reg delete "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePidlMRU" /f
